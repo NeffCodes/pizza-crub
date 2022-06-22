@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pizza Toppings</title>
+
+    <!-- Font-Awesome Icons -->
+    <script src="https://kit.fontawesome.com/ab085a1591.js" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+  <body>
+
+  <body>
+    <section class="facts">
+      <h1>Pizza toppings</h1>
+      <ul>
+      <% for(let i=0; i < info.length; i++) {%>
+          <li>
+              <span><%= info[i].topping %></span>
+              <span><%= info[i].likes %></span>
+              <span class='fa fa-thumbs-up'></span>
+              <span class='fa fa-trash'></span>
+          </li>
+      <% } %>
+      </ul>
+    </section>
+
+    <section class="addToppings">
+      <h2>Don't see your favorite toppings? Add it in</h2>
+
+      <form action="/addTopping" method="POST">
+          <input type="text" placeholder="pizza topping" name="topping">
+          <input type="submit">
+      </form>
+    </section>
+
+
+    <script src='js/main.js'></script>
+  </body>
+</html>

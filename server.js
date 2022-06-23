@@ -23,7 +23,7 @@ app.use(express.json())
 
 ///////// ROUTES /////////////////////////////////////
 app.get('/', (req, res) => {
-  db.collection(collection).find().toArray()
+  db.collection(collection).find().sort({likes: -1}).toArray()
     .then(data => {
       // console.log(data)
       res.render('index.ejs', { info: data })
@@ -51,7 +51,6 @@ app.put('/updateLike', (request, response) => {
   db.collection(collection).findOneAndUpdate(
     { "topping": request.body.topping },
     { $set: { "likes": newCount } },
-    { upsert: true, sort: { _id: -1 } }
   )
   .then( result => {
     console.log('Updated vote for', request.body.topping,'to',newCount)

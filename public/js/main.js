@@ -5,8 +5,8 @@ import updateLikes from "./modules/updateLikes.mjs"
 if(!localStorage.getItem('votedToppings')) localStorage.setItem('votedToppings', '{}')
 
 const deleteButtons = document.querySelectorAll('.fa-trash')
-const upvotes = document.querySelectorAll('.fa-thumbs-up')
-const downvotes = document.querySelectorAll('.fa-thumbs-down')
+const upvotes = document.querySelectorAll('.up')
+const downvotes = document.querySelectorAll('.down')
 
 Array.from(deleteButtons).forEach( deleteButton => deleteButton.addEventListener('click', deleteTopping))
 Array.from(upvotes).forEach( upvote => {

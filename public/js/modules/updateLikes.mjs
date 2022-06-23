@@ -1,5 +1,5 @@
 export default async function updateLikes(event){
-  const topping = this.parentNode.childNodes[1].innerText
+  const topping = this.parentNode.parentNode.childNodes[3].innerText
   const count = Number(this.parentNode.childNodes[3].innerText)
   const votedToppings = JSON.parse(localStorage.getItem('votedToppings'))
 

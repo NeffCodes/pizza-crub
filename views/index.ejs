@@ -16,15 +16,18 @@
 
   <body>
     <section class="toppings">
-      <h1>Pizza toppings</h1>
-      <ul>
+      <h1>Ultimate Pizza Toppings</h1>
+      <h2>Let us know what toppings you do or don't like</h2>
+      <ul class="tile_container">
       <% for(let i=0; i < info.length; i++) {%>
-          <li>
-              <span><%= info[i].topping %></span>
-              <span><%= info[i].likes %></span>
-              <span class='fa fa-thumbs-up'></span>
-              <span class='fa fa-thumbs-down'></span>
+          <li class="tile">
               <span class='fa fa-trash'></span>
+              <h3><%= info[i].topping %></h3>
+              <div class="voting">
+                <span class='fa-solid fa-pizza-slice up'></span>
+                <h4 class="likes"><%= info[i].likes %></h4>
+                <span class='fa-solid fa-pizza-slice down'></span>
+              </div>
           </li>
       <% } %>
       </ul>
@@ -35,10 +38,14 @@
 
       <form action="/addTopping" method="POST">
           <input type="text" placeholder="pizza topping" name="topping">
-          <input type="submit">
+          <button type="submit">Submit Topping</button>
       </form>
     </section>
 
+    <footer>
+      <p>This is a simple CRUD app using Express, MongoDB, and EJS.</p>
+      <p>© <a href="https://jamesneff.com" target="_blank">James Neff</a></p>
+    </footer>
 
     <script type="module" src='js/main.js'></script>
   </body>

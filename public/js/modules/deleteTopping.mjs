@@ -1,6 +1,6 @@
 export default async function deleteTopping() {
   const deleteCode = window.prompt("Password required:")
-  const topping = this.parentNode.childNodes[1].innerText
+  const topping = this.parentNode.childNodes[3].innerText
   try {
     const response = await fetch('deleteTopping', {
       method:'delete',

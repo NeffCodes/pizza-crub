@@ -15,18 +15,21 @@ Array.from(downvotes).forEach( downvote => {
 
 
 async function deleteTopping() {
+  const deleteCode = window.prompt("Password required:")
   const topping = this.parentNode.childNodes[1].innerText
   try {
     const response = await fetch('deleteTopping', {
       method:'delete',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({
-        'toppingToDelete': topping
+        'toppingToDelete': topping,
+        '_pw': deleteCode
       })
     })
     const data = await response.json()
-    console.log(data)
-    location.reload()
+    data.msg ?
+     alert(data.msg) :
+     location.reload()
   }
   catch(err) {
     console.log(err)

@@ -61,13 +61,20 @@ app.put('/updateLike', (request, response) => {
 })
 
 app.delete('/deleteTopping', (request,response) => {
+  const submittedPasscode = request.body._pw
   const removedTopping = request.body.toppingToDelete
-  db.collection(collection).deleteOne({topping: removedTopping})
-  .then(result => {
-    console.log('Removed topping:', removedTopping)
-    response.json(`${removedTopping} topping removed`)
-  })
-  .catch(error => console.error(error))
+
+  if(submittedPasscode === process.env.DELETE_CODE){
+    db.collection(collection).deleteOne({topping: removedTopping})
+    .then(result => {
+      console.log('Removed topping:', removedTopping)
+      response.json(`${removedTopping} topping removed`)
+    })
+    .catch(error => console.error(error))
+  } else {
+    console.log("Incorrect Passcode")
+    response.json({msg : 'Incorrect Passcode'})
+  }
 })
 
 ///////// LISTENER /////////////////////////////////////

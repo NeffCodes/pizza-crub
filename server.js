@@ -33,7 +33,7 @@ app.get('/', (req, res) => {
 
 app.post('/addTopping', (request, response) => {
   const addedTopping = request.body.topping[0].toUpperCase() + request.body.topping.slice(1).toLowerCase();
-  db.collection(collection).insertOne({topping: addedTopping, likes: 1})
+  db.collection(collection).insertOne({topping: addedTopping, likes: 0})
   .then(result => {
       console.log('Added topping:', addedTopping)
       response.redirect('/')

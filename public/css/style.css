@@ -75,6 +75,7 @@ h2 {
 .toppings {
   padding: 2rem;
   min-height: calc(100vh - 9rem);
+  background-color: var(--black);
   background-image: url(../images/pizza.jpg);
   background-repeat: no-repeat;
   background-size: cover;

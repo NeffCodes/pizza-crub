@@ -32,13 +32,16 @@ app.get('/', (req, res) => {
 })
 
 app.post('/addTopping', (request, response) => {
-  const addedTopping = request.body.topping;
-  db.collection(collection).insertOne({topping: request.body.topping, likes: 1})
+  const addedTopping = request.body.topping[0].toUpperCase() + request.body.topping.slice(1).toLowerCase();
+  db.collection(collection).insertOne({topping: addedTopping, likes: 1})
   .then(result => {
       console.log('Added topping:', addedTopping)
       response.redirect('/')
   })
-  .catch(error => console.error(error))
+  .catch(error => {
+    console.error(error)
+    response.redirect('/')
+  })
 })
 
 app.put('/updateLike', (request, response) => {

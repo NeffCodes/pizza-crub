@@ -11,7 +11,7 @@
 
 ____
 
-This is a simple CRUD app to see what toppings truly belong on a pizza.
+This is a simple CRUD app to see what toppings truly belong on a pizza. Users are able to vote on, change their vote, and add what toppings they like.
 
 **Link to project:** [https://simple-pizza-crud.herokuapp.com/](https://simple-pizza-crud.herokuapp.com/)
 

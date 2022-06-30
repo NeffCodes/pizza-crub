@@ -186,8 +186,20 @@ h2 {
 /*******************************************/
 
 footer{
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
   padding: 1rem 1rem;
   background: var(--lblack);
   color: var(--white);
   font-size: 0.8rem;
+}
+footer .fa-github{
+  font-size: 1.6rem;
+  color: var(--white);
+  opacity: 0.8;
+  transition: 0.2s ease-in-out;
+}
+.fa-github:hover {
+  opacity: 1;
 }

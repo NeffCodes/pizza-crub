@@ -2,11 +2,11 @@ export default async function updateLikes(event){
   const topping = this.parentNode.parentNode.childNodes[3].innerText
   const count = Number(this.parentNode.childNodes[3].innerText)
   const votedToppings = JSON.parse(localStorage.getItem('votedToppings'))
-
-  if(votedToppings[topping]) {
-    alert('Sorry, looks like you already casted your vote for this topping')
+  const voteDirection = event.currentTarget.vote
+  if(votedToppings[topping] === voteDirection) {
+    alert('Whoops, sorry. No double voting.')
   } else {
-    votedToppings[topping] = true;
+    votedToppings[topping] = voteDirection;
     localStorage.setItem('votedToppings', JSON.stringify(votedToppings))
     try {
       const response = await fetch('updateLike', {
@@ -15,7 +15,7 @@ export default async function updateLikes(event){
         body: JSON.stringify({
           'topping': topping,
           'likes': count,
-          '_vote': event.currentTarget.vote
+          '_vote': voteDirection
         })
       })
       const data = await response.json();

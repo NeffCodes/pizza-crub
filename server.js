@@ -1,8 +1,10 @@
 const express = require('express')
 const app = express()
 const MongoClient = require('mongodb').MongoClient
+const { v4: uuidv4 } = require('uuid');
 PORT = 8000
 require('dotenv').config()
+
 
 let db,
     dbConnectionStr = process.env.DB_STRING,
@@ -31,9 +33,11 @@ app.get('/', (req, res) => {
     .catch(error => console.log(error))
 })
 
+//add new topping
 app.post('/addTopping', (request, response) => {
   const addedTopping = request.body.topping[0].toUpperCase() + request.body.topping.slice(1).toLowerCase();
-  db.collection(collection).insertOne({topping: addedTopping, likes: 0})
+  const uuid = uuidv4();
+  db.collection(collection).insertOne({id: uuid,topping: addedTopping, likes: 0})
   .then(result => {
       console.log('Added topping:', addedTopping)
       response.redirect('/')
@@ -44,6 +48,7 @@ app.post('/addTopping', (request, response) => {
   })
 })
 
+//update likes on a topping
 app.put('/updateLike', (request, response) => {
   console.log('request',request.body)
   const newCount = request.body._vote === "up" ? request.body.likes + 1 : request.body.likes - 1
@@ -59,6 +64,7 @@ app.put('/updateLike', (request, response) => {
   .catch(error => console.error(error))
 })
 
+//remove a topping
 app.delete('/deleteTopping', (request,response) => {
   const submittedPasscode = request.body._pw
   const removedTopping = request.body.toppingToDelete

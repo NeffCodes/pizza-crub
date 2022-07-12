@@ -1,4 +1,4 @@
-# Simple Pizza CRUD App
+# Simple Pizza CRUD App Prototype
 
 ![Ultimate Pizza Toppings](./public/images/readme.png)
 

@@ -35,7 +35,7 @@ app.get('/', (req, res) => {
 
 //add new topping
 app.post('/addTopping', (request, response) => {
-  const addedTopping = request.body.topping[0].toUpperCase() + request.body.topping.slice(1).toLowerCase();
+  const addedTopping = request.body.topping.split(' ').map( word => word[0].toUpperCase() + word.slice(1).toLowerCase()).join(' ');
   const uuid = uuidv4();
   db.collection(collection).insertOne({id: uuid,topping: addedTopping, likes: 0})
   .then(result => {

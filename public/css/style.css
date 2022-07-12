@@ -3,14 +3,16 @@
 /*******************************************/
  :root {
 
-  --red: #D93D04;
+  --dred:#7B0202;
+  --red: #940202;
   --pink:#D9946C;
   --orange: #D98236;
   --green: #6F7302;
   --lgreen: #A3A656;
   --black: #0D0D0D;
-  --lblack: #262626;
-  --white: #F2EBDC;
+  --lblack: #222;
+  --beige: #F2EBDC;
+  --white: #FFF;
 
   --borderRadius: 4px;
  }
@@ -63,10 +65,69 @@ h1 {
   text-align: center;
 }
 
-h2 {
+h4 {
   margin: 0 auto;
   max-width: 80%;
-  color: var(--pink);
+}
+
+button:hover{
+  cursor: pointer;
+}
+/******************************************
+/* Header
+/*******************************************/
+header {
+  padding: 0.25rem 2rem 0.75rem;
+  background-color: var(--red);
+}
+.title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+#logo {
+  width: 50%;
+  max-height: 2.25rem;
+  max-width: 18.75rem ;
+}
+#logo > img {
+  max-height: 2.25rem;
+  padding: 0.25rem 0;
+  height: inherit;
+}
+.title > h1 {
+  font-weight: 600;
+  font-size: 1.6rem;
+
+  font-family: 'Times New Roman', Times, serif;
+  margin: 0;
+}
+
+@media screen and (max-width: 534px) {
+  .title{
+    flex-direction: column;
+  }
+  #logo {
+    width: 100%;
+    border-bottom: 1px solid var(--white)
+  }
+  #logo > img {
+    width: 100%;
+  }
+}
+
+/******************************************
+/* About
+/*******************************************/
+.about {
+  padding: 1rem 2rem;
+  background: var(--dred);
+  color: var(--white);
+}
+.about > p {
+  max-width: 38rem;
+  margin: 0 auto;
   text-align: center;
 }
 /******************************************
@@ -97,7 +158,7 @@ h2 {
  padding: 1rem;
  min-width: 20rem;
  max-width: 25rem;
- background: var(--white);
+ background: var(--beige);
  flex: 1 1 0;
  text-align: center;
  border-radius: var(--borderRadius);
@@ -171,12 +232,11 @@ h2 {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 3rem 1rem;
-  background: var(--red);
-  background: linear-gradient(180deg, var(--red) 48%, rgba(191,19,4,1) 100%); 
-  border-top: 2px solid var(--orange);
+  padding: 1rem 1rem 6rem;
+  background: var(--red); 
+  border-top: 2px solid #760101;
 }
-.addToppings h2 {
+.addToppings h2, header h2 {
   margin-bottom: 1rem;
   color: var(--white);
 }
@@ -188,11 +248,21 @@ h2 {
 footer{
   display: flex;
   justify-content: space-between;
+  align-items: center;
   gap: 1rem;
-  padding: 1rem 1rem;
+  padding: 1rem 2rem;
   background: var(--lblack);
   color: var(--white);
   font-size: 0.8rem;
+}
+footer .underline, footer .underline:visited {
+  color: var(--white);
+  border-bottom: solid 1px var(--white);
+  transition: 0.2s ease-in-out;
+  text-decoration: none;
+}
+footer .underline:hover {
+  border-bottom-color: transparent;
 }
 footer .fa-github{
   font-size: 1.6rem;

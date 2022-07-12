@@ -1,6 +1,6 @@
 # Simple Pizza CRUD App
 
-![Ultimate Pizza Toppings](./public/images/readme.gif)
+![Ultimate Pizza Toppings](./public/images/readme.png)
 
 <h3 align="center">
     &#x2B21;
